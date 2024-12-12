@@ -62,9 +62,9 @@ for (let a = 1; a < 100; a++) {
 }
 
 function simulator() {
-  avaibleTimeInput = document.getElementById("avaibleTimeInput").value
-  currentLevelInput = document.getElementById("currentLevelInput").value
-  desirebleLevelInput = document.getElementById("desirebleLevelInput").value
+  avaibleTimeInput = parseInt(document.getElementById("avaibleTimeInput").value)
+  currentLevelInput = parseInt(document.getElementById("currentLevelInput").value)
+  desirebleLevelInput = parseInt(document.getElementById("desirebleLevelInput").value)
   console.log(daysNeeded())
 
   resultTable.innerHTML = `
@@ -96,9 +96,10 @@ function simulator() {
                     </tbody>
                   </table>
     `
+
 let newLabels = [currentLevelInput, currentLevelInput+1, currentLevelInput+2, currentLevelInput+3, currentLevelInput+4]
-let newData = [hoursNeeded(), hoursNeeded()+3, hoursNeeded()+4, hoursNeeded()+3, hoursNeeded()+4]
-graphicChart(mychart, newLabels, )
+let newData = [hoursNeeded(), hoursNeeded()+3, hoursNeeded()+7, hoursNeeded()+10, hoursNeeded()+14]
+graphicChart(mychart, newLabels, newData)
 }
 
 function graphicChart(chart, newLabels, newData) {
@@ -119,8 +120,23 @@ const mychart =  new Chart(ctx, {
   },
   options: {
     scales: {
+      x: {
+        title: {
+            display: true, // Ativa o título
+            text: 'Level', // Texto do eixo X
+            font: {
+                size: 16 // Tamanho da fonte
+            }
+        }
+      },
       y: {
-        beginAtZero: true
+        title: {
+          display: true, // Ativa o título
+          text: 'Hour', // Texto do eixo Y
+          font: {
+              size: 16 // Tamanho da fonte
+          }
+        }
       }
     }
   }
