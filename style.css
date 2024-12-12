@@ -41,6 +41,8 @@ h1{
 }
 
 #simulationDiv{
+    padding-bottom: 50px;
     background: #c1cce0;
     height: 100%;
+
 }
