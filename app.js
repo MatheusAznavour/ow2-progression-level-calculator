@@ -67,7 +67,7 @@ function simulator() {
   desirebleLevelInput = parseInt(document.getElementById("desirebleLevelInput").value)
   console.log(daysNeeded())
 
-  resultTable.innerHTML = `
+  resultTable.innerHTML += `
                     <table class="table table-striped" id="resultTabled">
                     <thead>
                       <tr>
