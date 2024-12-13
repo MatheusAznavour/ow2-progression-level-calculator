@@ -67,7 +67,7 @@ function simulator() {
   desirebleLevelInput = parseInt(document.getElementById("desirebleLevelInput").value)
   console.log(daysNeeded())
 
-  resultTable.innerHTML += `
+  resultTable.innerHTML = `
                     <table class="table table-striped" id="resultTabled">
                     <thead>
                       <tr>
@@ -97,7 +97,7 @@ function simulator() {
                   </table>
     `
 
-let newLabels = [currentLevelInput, currentLevelInput+1, currentLevelInput+2, currentLevelInput+3, currentLevelInput+4]
+let newLabels = [currentLevelInput, currentLevelInput+1, currentLevelInput+2, currentLevelInput+3, desirebleLevelInput]
 let newData = [hoursNeeded(), hoursNeeded()+3, hoursNeeded()+7, hoursNeeded()+10, hoursNeeded()+14]
 graphicChart(mychart, newLabels, newData)
 }
