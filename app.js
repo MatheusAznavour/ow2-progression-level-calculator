@@ -141,27 +141,3 @@ const mychart =  new Chart(ctx, {
     }
   }
 });
-
-
-/*
-function graphicChart(d1) {
-  const mychart =  new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: [d1, '21', '22', '23', '24', '25'],
-      datasets: [{
-        label: 'level per hours',
-        data: [28, 32, 35, 39, 42, 46],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-}
-  */
