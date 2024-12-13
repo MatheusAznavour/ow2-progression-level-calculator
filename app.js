@@ -12,6 +12,10 @@ const clTw = 478000 //Cealing twenth level
 
 let globalOutput = ""
 
+function hoursNeededLv(level){
+  let arithmetic = (5 * ( (30 * level) - 361))/42
+  return arithmetic
+}
 
 function xpAcquired(level) {
   let arithmetic = ((level - 20) * clXp) + clTw
@@ -24,10 +28,6 @@ function minutesNeeded(level) {
 }
 
 function xpNeeded() {
-  console.log(`
-        CURRENT LEVEL: ${currentLevelInput}
-        DESIREBLE INPUT: ${desirebleLevelInput}
-        `)
   let arithmetic = xpAcquired(parseInt(desirebleLevelInput)) - xpAcquired(parseInt(currentLevelInput))
   return arithmetic
 }
@@ -57,7 +57,7 @@ function chart(level, i) {
               `
 }
 
-for (let a = 1; a < 100; a++) {
+for (let a = 1; a < 100; a++) { //Initiates charts
   chart(a + 19, a)
 }
 
@@ -65,7 +65,6 @@ function simulator() {
   avaibleTimeInput = parseInt(document.getElementById("avaibleTimeInput").value)
   currentLevelInput = parseInt(document.getElementById("currentLevelInput").value)
   desirebleLevelInput = parseInt(document.getElementById("desirebleLevelInput").value)
-  console.log(daysNeeded())
 
   resultTable.innerHTML = `
                     <table class="table table-striped" id="resultTabled">
@@ -97,15 +96,22 @@ function simulator() {
                   </table>
     `
 
-let newLabels = [currentLevelInput, currentLevelInput+1, currentLevelInput+2, currentLevelInput+3, desirebleLevelInput]
-let newData = [hoursNeeded(), hoursNeeded()+3, hoursNeeded()+7, hoursNeeded()+10, hoursNeeded()+14]
+  let newLabels = []
+  let newData = []
+  for(let j = currentLevelInput; j <= desirebleLevelInput; j++){
+    newLabels.push(j)
+    newData.push(parseInt(hoursNeededLv(j)))
+    console.log(hoursNeededLv(j))
+  }
+
+
 graphicChart(mychart, newLabels, newData)
 }
 
-function graphicChart(chart, newLabels, newData) {
-  chart.data.labels = newLabels; // Atualiza os rótulos
-  chart.data.datasets[0].data = newData; // Atualiza os dados
-  chart.update(); // Atualiza o gráfico visualmente
+function graphicChart(chart, newLabels, newData) { //Just updates  the chart
+  chart.data.labels = newLabels;
+  chart.data.datasets[0].data = newData; 
+  chart.update();
 }
 
 const mychart =  new Chart(ctx, {
